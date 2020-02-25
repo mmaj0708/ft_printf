@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf_type_%.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaj <mmaj@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 17:39:17 by mmaj              #+#    #+#             */
-/*   Updated: 2020/01/09 15:48:36 by mmaj             ###   ########.fr       */
+/*   Created: 2020/02/25 12:11:00 by mmaj              #+#    #+#             */
+/*   Updated: 2020/02/25 12:31:24 by mmaj             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_printf.h"
 
-int		ft_printf(const char *format, ...);
-
-int 	main(int ac, char **av)
+void	type_prcent(va_list va, t_flags_set flag)
 {
-	char *str = "bonjour";
+	int i;
 
-	//printf(av[1], str, -15);
-	printf("%0000d\n", 15);
-	//ft_printf(av[1], str, str);
-	return (0);
+	if (va)
+		i = 1;
+	if (flag.field == ZERO)
+	{
+		ft_flag_zero(flag.digit_field);
+		ft_putchar_fd('%', 1);
+	}
+	if (flag.field == MINUS)
+	{
+		ft_putchar_fd('%', 1);
+		ft_noflag(flag.digit_field);
+	}
+	if (flag.field == NO_FLAG)
+	{
+		ft_noflag(flag.digit_field);
+		ft_putchar_fd('%', 1);
+	}
+	return ;
 }
