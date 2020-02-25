@@ -6,7 +6,7 @@
 #    By: mmaj <mmaj@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/17 15:15:18 by mmaj              #+#    #+#              #
-#    Updated: 2020/02/25 12:32:50 by mmaj             ###   ########.fr        #
+#    Updated: 2020/02/25 12:54:04 by mmaj             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ all : $(NAME) bonus
 
 $(NAME) :
 
-	@gcc -Wall -Wextra -Werror -I$(INCLUDES) -c $(SRCS)
+	@gcc -I$(INCLUDES) -c $(SRCS)
 	@ar rc $(NAME) $(OBJECTS)
 	ranlib $(NAME)
 

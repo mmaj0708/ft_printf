@@ -1,48 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_type_di.c                                :+:      :+:    :+:   */
+/*   ft_printf_type_x.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaj <mmaj@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/20 17:30:49 by mmaj              #+#    #+#             */
-/*   Updated: 2020/02/25 16:28:22 by mmaj             ###   ########.fr       */
+/*   Created: 2020/02/25 14:08:37 by mmaj              #+#    #+#             */
+/*   Updated: 2020/02/25 17:10:33 by mmaj             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_zerostr(int precision, int len)
-{
-	int		i;
-	int		len_prec;
-	char	*str_zero;
-
-	i = 0;
-	len_prec = precision - len;
-	str_zero = NULL;
-	if (len_prec > 0)
-	{
-		if(!(str_zero = malloc(len_prec + 1))) 			// 1 fonction
-			return (NULL);
-		while (i < len_prec)
-		{
-			str_zero[i] = '0';
-			i++;
-		}
-		str_zero[i] = '\0';								//
-	}
-	return (str_zero);
-}
-
-void	ft_inject(int is_negatif)
-{
-	if (is_negatif == TRUE)
-		ft_putchar_fd('-', 1);
-	return ;
-}
-
-void	type_di(va_list va, t_flags_set flag)
+void	type_x(va_list va, t_flags_set flag)
 {
 	long		nb;
 	int		len_field;
@@ -50,15 +20,15 @@ void	type_di(va_list va, t_flags_set flag)
 	char	*str_precision;
 	int		is_negatif;
 
-	nb = va_arg(va, int);
+	nb = va_arg(va, unsigned int);
 	is_negatif = FALSE;
-	if (nb < 0)
-	{
-		nb = nb * -1;
-		is_negatif = TRUE;
-	}
-	str = ft_itoa(nb);
-	printf("check str : %s", str);
+	// if (nb < 0)
+	// {
+	// 	nb = nb * -1;
+	// 	is_negatif = TRUE;
+	// }
+	str = ft_itoa_base(nb, "0123456789abcdef");
+	//printf("check str : %s", str);
 	if (nb == 0 && flag.digit_precision != NO_PRECISION)
 		str = NULL;
 	
