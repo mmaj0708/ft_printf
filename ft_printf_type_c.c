@@ -6,7 +6,7 @@
 /*   By: mmaj <mmaj@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 11:56:01 by mmaj              #+#    #+#             */
-/*   Updated: 2020/02/25 17:13:49 by mmaj             ###   ########.fr       */
+/*   Updated: 2020/02/26 10:41:50 by mmaj             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,34 +29,5 @@ void	type_c(va_list va, t_flags_set flag)
 		ft_noflag(flag.digit_field);
 		ft_putchar_fd(va_arg(va, int), 1);
 	}
-	return ;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-void	type_p(va_list va, t_flags_set flag)
-{
-	ft_putchar_fd('%', 1);
-	return ;
-}
-
-void	type_u(va_list va, t_flags_set flag)
-{
-//	ft_putnbru(va_arg(va, unsigned int));
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: mmaj <mmaj@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 13:20:27 by mmaj              #+#    #+#             */
-/*   Updated: 2020/02/24 16:06:49 by mmaj             ###   ########.fr       */
+/*   Updated: 2020/02/26 11:39:39 by mmaj             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	type_s(va_list va, t_flags_set flag)
 
 	len_str = ft_strlen(str);
 
-	if (flag.digit_precision != NO_PRECISION)
+	if (flag.digit_precision != NO_PRECISION && flag.digit_precision < len_str)
 		len_str = flag.digit_precision;
 	len_field = flag.digit_field - len_str + 1;
 	if (flag.field == MINUS)
