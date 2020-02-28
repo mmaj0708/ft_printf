@@ -6,7 +6,7 @@
 /*   By: mmaj <mmaj@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 11:02:49 by mmaj              #+#    #+#             */
-/*   Updated: 2020/02/20 12:28:48 by mmaj             ###   ########.fr       */
+/*   Updated: 2020/02/26 15:51:17 by mmaj             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void	ft_func_conv(t_func *ft_tab, t_flags_set flag, va_list va)
 		i++;
 	if (ft_tab[i].key == flag.type)
 		ft_tab[i].ptrfunc(va, flag);
-	return ;	
+	return ;
 }
 
 int		ft_conversion(t_flags_set flag, va_list va)
 {
-	t_func		ft_tab[10];	
+	t_func		ft_tab[10];
 
 	ft_init_func(ft_tab);
 	ft_func_conv(ft_tab, flag, va);

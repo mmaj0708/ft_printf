@@ -6,7 +6,7 @@
 /*   By: mmaj <mmaj@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 17:30:49 by mmaj              #+#    #+#             */
-/*   Updated: 2020/02/25 16:28:22 by mmaj             ###   ########.fr       */
+/*   Updated: 2020/02/28 11:53:56 by mmaj             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,21 @@ char	*ft_zerostr(int precision, int len)
 	str_zero = NULL;
 	if (len_prec > 0)
 	{
-		if(!(str_zero = malloc(len_prec + 1))) 			// 1 fonction
+		if (!(str_zero = malloc(len_prec + 1)))
 			return (NULL);
 		while (i < len_prec)
 		{
 			str_zero[i] = '0';
 			i++;
 		}
-		str_zero[i] = '\0';								//
+		str_zero[i] = '\0';
 	}
 	return (str_zero);
 }
 
-void	ft_inject(int is_negatif)
-{
-	if (is_negatif == TRUE)
-		ft_putchar_fd('-', 1);
-	return ;
-}
-
 void	type_di(va_list va, t_flags_set flag)
 {
-	long		nb;
+	long	nb;
 	int		len_field;
 	char	*str;
 	char	*str_precision;
@@ -58,28 +51,26 @@ void	type_di(va_list va, t_flags_set flag)
 		is_negatif = TRUE;
 	}
 	str = ft_itoa(nb);
-	printf("check str : %s", str);
-	if (nb == 0 && flag.digit_precision != NO_PRECISION)
+	if (nb == 0 && flag.digit_precision > NO_PRECISION)
 		str = NULL;
-	
 	str_precision = ft_zerostr(flag.digit_precision, ft_strlen(str));
 	str = ft_strjoin(str_precision, str);
 	len_field = flag.digit_field - ft_strlen(str) + 1;
 	if (flag.field == NO_FLAG)
 	{
-		if(is_negatif == TRUE)
+		if (is_negatif == TRUE)
 		{
 			len_field--;
 			ft_noflag(len_field);
 			ft_putchar_fd('-', 1);
 		}
 		else
-		ft_noflag(len_field);
+			ft_noflag(len_field);
 		ft_putstr(str, ft_strlen(str));
 	}
 	if (flag.field == MINUS)
 	{
-		if(is_negatif == TRUE)
+		if (is_negatif == TRUE)
 		{
 			ft_putchar_fd('-', 1);
 			len_field--;
@@ -87,21 +78,21 @@ void	type_di(va_list va, t_flags_set flag)
 		ft_putstr(str, ft_strlen(str));
 		ft_noflag(len_field);
 	}
-	if (flag.field == ZERO && flag.digit_precision != NO_PRECISION)
+	if (flag.field == ZERO && flag.digit_precision > NO_PRECISION)
 	{
-		if(is_negatif == TRUE)
+		if (is_negatif == TRUE)
 		{
 			len_field--;
 			ft_noflag(len_field);
 			ft_putchar_fd('-', 1);
 		}
 		else
-		ft_noflag(len_field);
+			ft_noflag(len_field);
 		ft_putstr(str, ft_strlen(str));
 	}
-	if (flag.field == ZERO && flag.digit_precision == NO_PRECISION)
+	if (flag.field == ZERO && flag.digit_precision <= NO_PRECISION)
 	{
-		if(is_negatif == TRUE)
+		if (is_negatif == TRUE)
 		{
 			ft_putchar_fd('-', 1);
 			len_field--;

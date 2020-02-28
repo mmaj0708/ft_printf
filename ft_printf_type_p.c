@@ -6,7 +6,7 @@
 /*   By: mmaj <mmaj@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 10:39:18 by mmaj              #+#    #+#             */
-/*   Updated: 2020/02/26 11:16:36 by mmaj             ###   ########.fr       */
+/*   Updated: 2020/02/28 11:40:07 by mmaj             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,9 @@ void	type_p(va_list va, t_flags_set flag)
 
 	nb = va_arg(va, long int);
 	is_negatif = FALSE;
-	// if (nb < 0)
-	// {
-	// 	nb = nb * -1;
-	// 	is_negatif = TRUE;
-	// }
 	str = ft_itoa_base(nb, "0123456789abcdef");
-//	printf("check str : %s\n", str);
-	if (nb == 0 && flag.digit_precision != NO_PRECISION)
+	if (nb == 0 && flag.digit_precision > NO_PRECISION)
 		str = NULL;
-	
 	str_precision = ft_zerostr(flag.digit_precision, ft_strlen(str));
 	str = ft_strjoin(str_precision, str);
 	len_field = flag.digit_field - ft_strlen(str) - 1;
@@ -47,13 +40,13 @@ void	type_p(va_list va, t_flags_set flag)
 		ft_putstr(str, ft_strlen(str));
 		ft_noflag(len_field);
 	}
-	if (flag.field == ZERO && flag.digit_precision != NO_PRECISION)
+	if (flag.field == ZERO && flag.digit_precision > NO_PRECISION)
 	{
 		ft_noflag(len_field);
 		ft_putstr("0x", 2);
 		ft_putstr(str, ft_strlen(str));
 	}
-	if (flag.field == ZERO && flag.digit_precision == NO_PRECISION)
+	if (flag.field == ZERO && flag.digit_precision <= NO_PRECISION)
 	{
 		ft_putstr("0x", 2);
 		ft_flag_zero(len_field);

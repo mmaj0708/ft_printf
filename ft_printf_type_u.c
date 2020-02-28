@@ -6,7 +6,7 @@
 /*   By: mmaj <mmaj@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 10:41:26 by mmaj              #+#    #+#             */
-/*   Updated: 2020/02/26 11:23:30 by mmaj             ###   ########.fr       */
+/*   Updated: 2020/02/28 11:55:10 by mmaj             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,26 @@ void	type_u(va_list va, t_flags_set flag)
 		is_negatif = TRUE;
 	}
 	str = ft_itoa(nb);
-//	printf("check str : %s", str);
-	if (nb == 0 && flag.digit_precision != NO_PRECISION)
+	if (nb == 0 && flag.digit_precision > NO_PRECISION)
 		str = NULL;
-	
 	str_precision = ft_zerostr(flag.digit_precision, ft_strlen(str));
 	str = ft_strjoin(str_precision, str);
 	len_field = flag.digit_field - ft_strlen(str) + 1;
 	if (flag.field == NO_FLAG)
 	{
-		if(is_negatif == TRUE)
+		if (is_negatif == TRUE)
 		{
 			len_field--;
 			ft_noflag(len_field);
 			ft_putchar_fd('-', 1);
 		}
 		else
-		ft_noflag(len_field);
+			ft_noflag(len_field);
 		ft_putstr(str, ft_strlen(str));
 	}
 	if (flag.field == MINUS)
 	{
-		if(is_negatif == TRUE)
+		if (is_negatif == TRUE)
 		{
 			ft_putchar_fd('-', 1);
 			len_field--;
@@ -57,21 +55,21 @@ void	type_u(va_list va, t_flags_set flag)
 		ft_putstr(str, ft_strlen(str));
 		ft_noflag(len_field);
 	}
-	if (flag.field == ZERO && flag.digit_precision != NO_PRECISION)
+	if (flag.field == ZERO && flag.digit_precision > NO_PRECISION)
 	{
-		if(is_negatif == TRUE)
+		if (is_negatif == TRUE)
 		{
 			len_field--;
 			ft_noflag(len_field);
 			ft_putchar_fd('-', 1);
 		}
 		else
-		ft_noflag(len_field);
+			ft_noflag(len_field);
 		ft_putstr(str, ft_strlen(str));
 	}
-	if (flag.field == ZERO && flag.digit_precision == NO_PRECISION)
+	if (flag.field == ZERO && flag.digit_precision <= NO_PRECISION)
 	{
-		if(is_negatif == TRUE)
+		if (is_negatif == TRUE)
 		{
 			ft_putchar_fd('-', 1);
 			len_field--;

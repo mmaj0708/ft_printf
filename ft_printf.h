@@ -6,7 +6,7 @@
 /*   By: mmaj <mmaj@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 17:55:49 by mmaj              #+#    #+#             */
-/*   Updated: 2020/02/25 15:06:53 by mmaj             ###   ########.fr       */
+/*   Updated: 2020/02/26 15:29:01 by mmaj             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,19 @@
 # define NO_FLAG		-1
 # define NO_PRECISION	-1
 
-typedef struct	s_flags_set
+typedef struct		s_flags_set
 {
-	char	type;
-	int		field;
-	int		digit_field;
-	int		digit_precision;
-}				t_flags_set;
+	char			type;
+	int				field;
+	int				digit_field;
+	int				digit_precision;
+}					t_flags_set;
 
-typedef struct	s_funct
+typedef struct		s_funct
 {
-	void	(*ptrfunc)(va_list va, t_flags_set flag);
-	char	key;
-}				t_func;
+	void			(*ptrfunc)(va_list va, t_flags_set flag);
+	char			key;
+}					t_func;
 
 int					ft_printf(const char *format, ...);
 void				ft_putchar_fd(char c, int fd);
@@ -58,6 +58,7 @@ void				*ft_calloc(size_t count, size_t size);
 void				ft_putstr(char *str, int len);
 char				*ft_zerostr(int precision, int len);
 char				*ft_itoa_base(long n, char *base);
+int					ft_atoi(const char *str);
 
 void				type_c(va_list va, t_flags_set flag);
 void				type_s(va_list va, t_flags_set flag);

@@ -6,7 +6,7 @@
 /*   By: mmaj <mmaj@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 13:20:27 by mmaj              #+#    #+#             */
-/*   Updated: 2020/02/26 11:39:39 by mmaj             ###   ########.fr       */
+/*   Updated: 2020/02/28 11:59:34 by mmaj             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,15 @@ void	ft_putstr(char *str, int len)
 
 void	type_s(va_list va, t_flags_set flag)
 {
-	int 	len_str;
+	int		len_str;
 	int		len_field;
 	char	*str;
 
 	str = va_arg(va, char*);
 	if (str == NULL)
 		str = "(null)";
-
 	len_str = ft_strlen(str);
-
-	if (flag.digit_precision != NO_PRECISION && flag.digit_precision < len_str)
+	if (flag.digit_precision > NO_PRECISION && flag.digit_precision < len_str)
 		len_str = flag.digit_precision;
 	len_field = flag.digit_field - len_str + 1;
 	if (flag.field == MINUS)
